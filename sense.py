@@ -4,7 +4,7 @@ import boto3
 import time
 
 region = 'eu-west-1'
-iot = boto3.client('sensehat', region_name=region)
+iot = boto3.client('iot-data', region_name=region)
 sense = SenseHat()
 
 
@@ -36,6 +36,6 @@ while True:
     data = get_accelerometer()
     print(data)
     response = iot.publish(
-        topic='/sense/acceleration',
+        topic=topic,
         payload=data
     )
