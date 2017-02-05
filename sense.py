@@ -28,15 +28,15 @@ def get_accelerometer():
     data = sense.get_accelerometer()
     print("p: {pitch}, r: {roll}, y: {yaw}".format(**data))
     data['type'] = 'acceleration'
-    data['deviceid'] = get_raspid()
-    data['datetime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    data['device_id'] = get_raspid()
+    data['timestamp'] = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S")
     return json.dumps(data)
 
 while True:
-    time.sleep(1)
-    data = get_accelerometer()
-    print(data)
+    time.sleep(5)
+    acc = get_accelerometer()
+    print(acc)
     response = iot.publish(
         topic=topic,
-        payload=data
+        payload=acc
     )
