@@ -2,6 +2,7 @@ from sense_hat import SenseHat
 import datetime
 import boto3
 import time
+import json
 
 region = 'eu-west-1'
 iot = boto3.client('iot-data', region_name=region)
@@ -29,7 +30,7 @@ def get_accelerometer():
     data['type'] = 'acceleration'
     data['deviceid'] = get_raspid()
     data['datetime'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return data
+    return json.dumps(data)
 
 while True:
     time.sleep(1)
