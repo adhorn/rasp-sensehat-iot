@@ -3,7 +3,8 @@ import datetime
 import boto3
 import time
 
-iot = boto3.client('iot-data')
+region = 'eu-west-1'
+iot = boto3.client('sensehat', region_name=region)
 sense = SenseHat()
 
 
