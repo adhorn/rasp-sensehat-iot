@@ -52,9 +52,8 @@ def get_pressure():
 
 
 while True:
-    time.sleep(5)
     payload = {}
-    payload['acceleration'] = get_accelerometer()
+    payload.update(get_accelerometer())
     payload['humidity'] = get_humidity()
     payload['temperature'] = get_temperature()
     payload['pressure'] = get_pressure()
@@ -65,3 +64,4 @@ while True:
         topic=topic,
         payload=payload
     )
+    time.sleep(5)
