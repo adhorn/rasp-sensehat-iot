@@ -26,7 +26,6 @@ topic = sensor_id + '/sensehat/data'
 # get the data from the accelerometer
 def get_accelerometer():
     acceleration = sense.get_accelerometer()
-    acceleration['type'] = 'acceleration'
     print("Pitch: {pitch}, Roll: {roll}, Yaw: {yaw}".format(
         **acceleration
         )
@@ -36,21 +35,18 @@ def get_accelerometer():
 
 def get_humidity():
     humidity = sense.get_humidity()
-    humidity['type'] = 'acceleration'
     print("Humidity: %s %%rH" % humidity)
     return json.dumps(humidity)
 
 
 def get_temperature():
     temperature = sense.get_temperature_from_humidity()
-    temperature['type'] = 'temperature'
     print("Temperature: %s C" % temperature)
     return json.dumps(temperature)
 
 
 def get_pressure():
     pressure = sense.get_pressure()
-    pressure['type'] = 'pressure'
     print("Pressure: %s Millibars" % pressure)
     return json.dumps(pressure)
 
