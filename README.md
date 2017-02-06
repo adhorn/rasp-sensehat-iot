@@ -3,6 +3,7 @@ Sending data from Raspberry Pi with Sensehat sensor to IoT
 
 
 create Data mapping to ES
+-------------------------
 
 curl -i -X PUT -d '{
   "mappings": {
@@ -38,3 +39,21 @@ curl -i -X PUT -d '{
   }
 }
 ' 'https://URL/index'
+
+
+Athena
+-------
+CREATE EXTERNAL TABLE sensehat_iot_full (
+    datetime timestamp,
+    device_id string,
+    yaw double,
+    pitch double,
+    roll double,
+    pressure double,
+    temperature double,
+    humidity double
+  )
+ROW FORMAT  serde 'org.apache.hive.hcatalog.data.JsonSerDe'
+with serdeproperties( 'ignore.malformed.json' = 'true' )
+LOCATION 's3://<BUCKET_NAME>/'
+
