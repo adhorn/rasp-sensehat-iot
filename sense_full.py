@@ -32,25 +32,25 @@ def get_accelerometer():
         **acceleration
         )
     )
-    return json.dumps(acceleration)
+    return acceleration
 
 
 def get_humidity():
     humidity = sense.get_humidity()
     print("Humidity: %s %%rH" % humidity)
-    return json.dumps(humidity)
+    return humidity
 
 
 def get_temperature():
     temperature = sense.get_temperature_from_humidity()
     print("Temperature: %s C" % temperature)
-    return json.dumps(temperature)
+    return temperature
 
 
 def get_pressure():
     pressure = sense.get_pressure()
     print("Pressure: %s Millibars" % pressure)
-    return json.dumps(pressure)
+    return pressure
 
 
 while True:
@@ -63,6 +63,6 @@ while True:
     print(payload)
     response = iot.publish(
         topic=topic,
-        payload=payload
+        payload=json.dumps(payload)
     )
     time.sleep(5)
