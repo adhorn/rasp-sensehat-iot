@@ -26,8 +26,6 @@ topic = sensor_id + '/sensehat/data'
 # get the data from the accelerometer
 def get_accelerometer():
     acceleration = sense.get_accelerometer()
-    print acceleration
-    print dir(acceleration)
     print("Pitch: {pitch}, Roll: {roll}, Yaw: {yaw}".format(
         **acceleration
         )
