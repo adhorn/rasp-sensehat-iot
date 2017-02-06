@@ -26,6 +26,8 @@ topic = sensor_id + '/sensehat/data'
 # get the data from the accelerometer
 def get_accelerometer():
     acceleration = sense.get_accelerometer()
+    print acceleration
+    print dir(acceleration)
     print("Pitch: {pitch}, Roll: {roll}, Yaw: {yaw}".format(
         **acceleration
         )
@@ -52,8 +54,7 @@ def get_pressure():
 
 
 while True:
-    payload = {}
-    payload.update(get_accelerometer())
+    payload = get_accelerometer()
     payload['humidity'] = get_humidity()
     payload['temperature'] = get_temperature()
     payload['pressure'] = get_pressure()
