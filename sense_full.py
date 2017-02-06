@@ -57,7 +57,7 @@ while True:
     payload['temperature'] = get_temperature()
     payload['pressure'] = get_pressure()
     payload['device_id'] = get_raspid()
-    payload['dateTime'] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+    payload['datetime'] = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     print(payload)
     response = iot.publish(
         topic=topic,
