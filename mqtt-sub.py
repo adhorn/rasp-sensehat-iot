@@ -47,7 +47,7 @@ mqttc.tls_set(
 
 
 mqttc.connect(AWS_IOT_ENDPOINT, port=8883)
-mqttc.subscribe("$aws/things/sensehat/shadow/update/#", qos=1)
+mqttc.subscribe("$aws/things/sensehat/shadow/update/info/#", qos=1)
 mqttc.loop_start()
 
 while 1:
