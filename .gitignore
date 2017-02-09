@@ -1,4 +1,6 @@
 *.HIDDEN_README
+local_settings.py
+settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
