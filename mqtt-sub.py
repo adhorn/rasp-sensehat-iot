@@ -27,6 +27,7 @@ def on_message(mqttc, obj, msg):
             )
     )
     sense.show_message(msg.payload)
+    sense.clear()
 
 
 mqttc = mqtt.Client(client_id="mqtt-test")
@@ -50,6 +51,6 @@ mqttc.loop_start()
 
 while 1:
     sleep(3)
-    temp = sense.get_temperature()
+    temp = "%.2f".format(sense.get_temperature())
     mqttc.publish("$aws/things/sensehat/shadow/update/accepted", temp, qos=1)
-    print("msg sent: temperature " + "%.2f" % temp)
+    print("msg sent: temperature {}".format(temp))
