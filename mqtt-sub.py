@@ -8,24 +8,32 @@ except ImportError:
     from default_settings import ROOT_CA, CERTFILE, KEYFILE, AWS_IOT_ENDPOINT
 
 
-# The callback for when the client receives a CONNACK response from the server.
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
-
-    # Subscribing in on_connect() means that if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    client.subscribe("$SYS/#")
+def on_connect(mqttc, obj, flags, rc):
+    if rc == 0:
+        print("Status code: {0} | Connection successful".format(rc))
+    elif rc == 1:
+        print("Status code: {0} | Connection refused".format(rc))
 
 
-# The callback for when a PUBLISH message is received from the server.
-def on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
+def on_subscribe(mqttc, obj, mid, granted_qos):
+    print(
+        "Subscribed: {0} data: {1}".format(mid, granted_qos)
+    )
 
 
-mqttc = mqtt.Client()
+def on_message(mqttc, obj, msg):
+    print(
+        "Received message from {0} | QoS: {1} | Data: {2}".format(
+            msg.topic, msg.qos, msg.payload
+        )
+    )
+
+
+mqttc = mqtt.Client(client_id="mqtt-test")
 
 #callbacks
 mqttc.on_connect = on_connect
+mqttc.on_subscribe = on_subscribe
 mqttc.on_message = on_message
 
 mqttc.tls_set(
