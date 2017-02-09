@@ -12,6 +12,9 @@ except ImportError:
 sense = SenseHat()
 sense.clear()
 
+publish_topic = "$aws/things/sensehat/shadow/update/temperature"
+subscribe_topic = "$aws/things/sensehat/shadow/update/info/#"
+
 
 def on_connect(mqttc, obj, flags, rc):
     if rc == 0:
@@ -47,13 +50,13 @@ mqttc.tls_set(
 
 
 mqttc.connect(AWS_IOT_ENDPOINT, port=8883)
-mqttc.subscribe("$aws/things/sensehat/shadow/update/info/#", qos=1)
+mqttc.subscribe(subscribe_topic, qos=1)
 mqttc.loop_start()
 
 while 1:
     sleep(5)
     temp = "%.2f" % sense.get_temperature()
     mqttc.publish(
-        "$aws/things/sensehat/shadow/update/temperature", temp, qos=1
+        publish_topic, temp, qos=1
     )
-    print("msg sent: temperature {}".format(temp))
+    print("msg sent to {0}: temperature {1}".format(publish_topic, temp))
