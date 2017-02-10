@@ -11,6 +11,8 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
 
 **AWS IoT** easily and securely connects devices through the MQTT and HTTPS protocols. The IoT Rules Engine continuously processes incoming messages, enabling your devices to interact with other AWS services.
 
+**Amazon Elasticsearch Service** makes it easy to deploy, operate, and scale Elasticsearch for log analytics, full text search, application monitoring, and more. Amazon Elasticsearch Service is a fully managed service that delivers Elasticsearch’s easy-to-use APIs and real-time capabilities along with the availability, scalability, and security required by production workloads. The service offers built-in integrations with Kibana, Logstash, and AWS services including Amazon Kinesis Firehose, AWS Lambda, and Amazon CloudWatch so that you can go from raw data to actionable insights quickly.
+
 **Amazon S3** is object storage that provides you a highly reliable, secure, and scalable storage for all your data, big or small. It is designed to deliver 99.999999999% durability, and scale past trillions of objects.
 
 **Amazon Kinesis Firehose** allows you to capture and automatically load streaming data into Amazon Kinesis Analytics, Amazon S3, Amazon Redshift, and Amazon Elasticsearch Service, enabling near-real-time business intelligence and the use of dashboards.
@@ -18,6 +20,8 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
 **Amazon Athena** is an interactive query service that makes it easy to analyze data in Amazon S3 using SQL. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL, with most results delivered in seconds.
 
 **Amazon QuickSight** is a fast, cloud-powered business analytics service that makes it easy to build visualizations, perform ad-hoc analysis, and quickly get business insights from your data. You can easily run SQL queries using Athena on data stored in S3, and build business dashboards within QuickSight.
+
+
 
 **Prerequisites:**
 1. Create an Amazon Kinesis Firehose Stream with the following configuration: 
