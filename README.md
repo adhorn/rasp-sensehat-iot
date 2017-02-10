@@ -22,9 +22,9 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
 **Amazon QuickSight** is a fast, cloud-powered business analytics service that makes it easy to build visualizations, perform ad-hoc analysis, and quickly get business insights from your data. You can easily run SQL queries using Athena on data stored in S3, and build business dashboards within QuickSight.
 
 
-
 **Prerequisites:**
-1. Create an Amazon Kinesis Firehose Stream with the following configuration: 
+
+* Create an Amazon Kinesis Firehose Stream with the following configuration
 ```
   Delivery stream name: Rasp-SenseHat
   S3 bucket: mys3bucketname
@@ -40,20 +40,21 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
   Error logging: Enabled
 ```
 
-2. Create Amazon Elasticsearch Cluster (I used version 2.3) and create security policy to allow access from your IP address only.
+* Create Amazon Elasticsearch Cluster (I used version 2.3)
+ * create security policy to allow access from your IP address only
 
-3. Create an AWS IoT Rule with the following configuration: 
+* Create an AWS IoT Rule with the following configuration
 ```
   Rule query statement: SELECT * FROM '<ID_of_the_RaspPI>/sensehat/data'
 ```
 
-4. Add 2 filters to the AWS IoT Rule:
-  * Amazon Kinesis Firehose
+* Add 2 filters to the AWS IoT Rule
+ * Amazon Kinesis Firehose
 ```
   Stream name: Rasp-SenseHat
   Separator: \n (newline)
 ```
-   * Amazon Elasticsearch Service
+ * Amazon Elasticsearch Service
 ```
   Domain name: yourESdomain
   Endpoint: https://yourESdomain.es.amazonaws.com
@@ -62,7 +63,7 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
   Type: mydata (or anything else)
 ```
 
-5. create Data mapping to Amazon Elasticsearch with the following configuration:
+* Create Data mapping to Amazon Elasticsearch with the following configuration:
 ```
 curl -i -X PUT -d '{
   "mappings": {
@@ -100,7 +101,7 @@ curl -i -X PUT -d '{
 ' 'https://URL/index'
 ```
 
-6. Configuring Amazon Athena:
+* Configuring Amazon Athena:
 
 ```sql
 CREATE EXTERNAL TABLE sensehat_iot_full (
@@ -118,8 +119,8 @@ with serdeproperties( 'ignore.malformed.json' = 'true' )
 LOCATION 's3://<BUCKET_NAME>/'
 ```
 
-7. Analysing the data in Amazon Quicksight via Amazon Athena:
-  * Create a data source in QuickSight as follows:
+* Analysing the data in Amazon Quicksight via Amazon Athena:
+ * Create a data source in QuickSight as follows:
 ```
 Log into QuickSight
 Select "manage data" and "new data set".
@@ -128,7 +129,7 @@ Select the default schema and the sensehat_iot_full table created previously in 
 Click Vizualise - Enjoy :)
 ```
 
-8. Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
+* Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
 ```
 Index seach pattern: sensehat*
 Select datetime
