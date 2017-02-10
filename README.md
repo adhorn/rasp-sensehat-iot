@@ -1,25 +1,25 @@
-# rasp-sensehat-iot
+**README**
 Code used during my walk-through AWS IoT talk at the AWS Meetup Finland "Derive insights from IoT in minutes on AWS"
 https://www.meetup.com/awsfin/events/237185018/
 
-Goal:
+**Goal**:
 Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cloud.
 
 
 ![Demo](https://github.com/adhorn/rasp-sensehat-iot/blob/master/pics/demo.png)
 
 
-AWS IoT easily and securely connects devices through the MQTT and HTTPS protocols. The IoT Rules Engine continuously processes incoming messages, enabling your devices to interact with other AWS services.
+**AWS IoT** easily and securely connects devices through the MQTT and HTTPS protocols. The IoT Rules Engine continuously processes incoming messages, enabling your devices to interact with other AWS services.
 
-Amazon S3 is object storage that provides you a highly reliable, secure, and scalable storage for all your data, big or small. It is designed to deliver 99.999999999% durability, and scale past trillions of objects.
+**Amazon S3** is object storage that provides you a highly reliable, secure, and scalable storage for all your data, big or small. It is designed to deliver 99.999999999% durability, and scale past trillions of objects.
 
-Amazon Kinesis Firehose allows you to capture and automatically load streaming data into Amazon Kinesis Analytics, Amazon S3, Amazon Redshift, and Amazon Elasticsearch Service, enabling near-real-time business intelligence and the use of dashboards.
+**Amazon Kinesis Firehose** allows you to capture and automatically load streaming data into Amazon Kinesis Analytics, Amazon S3, Amazon Redshift, and Amazon Elasticsearch Service, enabling near-real-time business intelligence and the use of dashboards.
 
-Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using SQL. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL, with most results delivered in seconds.
+**Amazon Athena** is an interactive query service that makes it easy to analyze data in Amazon S3 using SQL. Simply point to your data in Amazon S3, define the schema, and start querying using standard SQL, with most results delivered in seconds.
 
-Amazon QuickSight is a fast, cloud-powered business analytics service that makes it easy to build visualizations, perform ad-hoc analysis, and quickly get business insights from your data. You can easily run SQL queries using Athena on data stored in S3, and build business dashboards within QuickSight.
+**Amazon QuickSight** is a fast, cloud-powered business analytics service that makes it easy to build visualizations, perform ad-hoc analysis, and quickly get business insights from your data. You can easily run SQL queries using Athena on data stored in S3, and build business dashboards within QuickSight.
 
-Prerequisites:
+**Prerequisites:**
 1. Create an Amazon Kinesis Firehose Stream with the following configuration: 
 ```
   Delivery stream name: Rasp-SenseHat
