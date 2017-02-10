@@ -58,7 +58,7 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
   Type: mydata (or anything else)
 ```
 
-  * create Data mapping to Amazon Elasticsearch with the following configuration:
+5. create Data mapping to Amazon Elasticsearch with the following configuration:
 ```
 curl -i -X PUT -d '{
   "mappings": {
@@ -96,8 +96,7 @@ curl -i -X PUT -d '{
 ' 'https://URL/index'
 ```
 
-
-5. Configuring Amazon Athena:
+6. Configuring Amazon Athena:
 
 ```sql
 CREATE EXTERNAL TABLE sensehat_iot_full (
@@ -115,17 +114,17 @@ with serdeproperties( 'ignore.malformed.json' = 'true' )
 LOCATION 's3://<BUCKET_NAME>/'
 ```
 
-6. Analysing the data in Amazon Quicksight via Amazon Athena:
-  * Create a data source in QuickSight with the following:
+7. Analysing the data in Amazon Quicksight via Amazon Athena:
+  * Create a data source in QuickSight as follows:
 ```
 Log into QuickSight
-Select Manage data and new data set.
-Choose Athena as a new data source.
+Select "manage data" and "new data set".
+Choose Athena as the new data source.
 Select the default schema and the sensehat_iot_full table created previously in Amazon Athena.
 Click Vizualise - Enjoy :)
 ```
 
-7. Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
+8. Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
 ```
 Index seach pattern: sensehat*
 Select datetime
