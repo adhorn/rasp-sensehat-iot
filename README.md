@@ -64,7 +64,7 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
   ```
 
 * Create Data mapping to Amazon Elasticsearch with the following configuration:
-  ```
+```
   curl -i -X PUT -d '{
     "mappings": {
       "sensehat": {
@@ -132,7 +132,7 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
 
 * Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
 
-  ```
+```
   Index seach pattern: sensehat*
   Select datetime
   Vizualise - Enjoy :)
