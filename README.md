@@ -44,18 +44,18 @@ Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cl
 ```
 
 4. Add 2 filters to the AWS IoT Rule:
-   * Amazon Kinesis Firehose
+  * Amazon Kinesis Firehose
 ```
-  Stream name Rasp-SenseHat
-  Separator \n (newline)
+  Stream name: Rasp-SenseHat
+  Separator: \n (newline)
 ```
    * Amazon Elasticsearch Service
 ```
-  Domain name yourESdomain
-  Endpoint https://yourESdomain.es.amazonaws.com
-  ID ${newuuid()}
-  Index sensehat
-  Type mydata (or anything else)
+  Domain name: yourESdomain
+  Endpoint: https://yourESdomain.es.amazonaws.com
+  ID: ${newuuid()}
+  Index: sensehat
+  Type: mydata (or anything else)
 ```
 
   * create Data mapping to Amazon Elasticsearch with the following configuration:
@@ -119,7 +119,7 @@ LOCATION 's3://<BUCKET_NAME>/'
   * Create a data source in QuickSight with the following:
 ```
 Log into QuickSight
-Select Manage data and New data set.
+Select Manage data and new data set.
 Choose Athena as a new data source.
 Select the default schema and the sensehat_iot_full table created previously in Amazon Athena.
 Click Vizualise - Enjoy :)
