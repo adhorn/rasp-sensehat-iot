@@ -43,7 +43,7 @@ Prerequisites:
   Rule query statement: SELECT * FROM '<ID_of_the_RaspPI>/sensehat/data'
 ```
 
-3. Add 2 filters to the AWS IoT Rule:
+4. Add 2 filters to the AWS IoT Rule:
    * Amazon Kinesis Firehose
 ```
   Stream name Rasp-SenseHat
@@ -58,11 +58,8 @@ Prerequisites:
   Type mydata (or anything else)
 ```
 
-
-
-create Data mapping to ES
--------------------------
-```json
+  * create Data mapping to Amazon Elasticsearch with the following configuration:
+```
 curl -i -X PUT -d '{
   "mappings": {
     "sensehat": {
@@ -99,8 +96,9 @@ curl -i -X PUT -d '{
 ' 'https://URL/index'
 ```
 
-Athena
--------
+
+5. Configuring Amazon Athena:
+
 ```sql
 CREATE EXTERNAL TABLE sensehat_iot_full (
     datetime timestamp,
@@ -116,4 +114,23 @@ ROW FORMAT  serde 'org.apache.hive.hcatalog.data.JsonSerDe'
 with serdeproperties( 'ignore.malformed.json' = 'true' )
 LOCATION 's3://<BUCKET_NAME>/'
 ```
+
+6. Analysing the data in Amazon Quicksight via Amazon Athena:
+  * Create a data source in QuickSight with the following:
+```
+Log into QuickSight
+Select Manage data and New data set.
+Choose Athena as a new data source.
+Select the default schema and the sensehat_iot_full table created previously in Amazon Athena.
+Click Vizualise - Enjoy :)
+```
+
+7. Connect into Kibana endpoint found from the Amazon Elasticsearch Service and create an index in setting:
+```
+Index seach pattern: sensehat*
+Select datetime
+Vizualise - Enjoy :)
+```
+
+
 
