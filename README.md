@@ -1,5 +1,12 @@
 # rasp-sensehat-iot
-Sending data from Raspberry Pi with Sensehat sensor to IoT
+Code used during my walk-through AWS IoT talk at the AWS Meetup Finland "Derive insights from IoT in minutes on AWS"
+https://www.meetup.com/awsfin/events/237185018/
+
+Goal:
+Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cloud.
+
+
+![Demo](https://github.com/adhorn/rasp-sensehat-iot/pics/demo.png)
 
 
 create Data mapping to ES
