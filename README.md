@@ -21,7 +21,7 @@ Amazon QuickSight is a fast, cloud-powered business analytics service that makes
 
 Prerequisites:
 1. Create an Amazon Kinesis Firehose Stream with the following configuration: 
-'''
+```
   Delivery stream name: Rasp-SenseHat
   S3 bucket: mys3bucketname
   S3 prefix: raw (or anything else)
@@ -34,29 +34,29 @@ Prerequisites:
   S3 Encryption: No Encryption
   Status: ACTIVE
   Error logging: Enabled
-'''
+```
 
 2. Create Amazon Elasticsearch Cluster (I used version 2.3) and create security policy to allow access from your IP address only.
 
 3. Create an AWS IoT Rule with the following configuration: 
-'''
+```
   Rule query statement: SELECT * FROM '<ID_of_the_RaspPI>/sensehat/data'
-'''
+```
 
 3. Add 2 filters to the AWS IoT Rule:
    * Amazon Kinesis Firehose
-'''
+```
   Stream name Rasp-SenseHat
   Separator \n (newline)
-'''
+```
    * Amazon Elasticsearch Service
-'''
+```
   Domain name yourESdomain
   Endpoint https://yourESdomain.es.amazonaws.com
   ID ${newuuid()}
   Index sensehat
   Type mydata (or anything else)
-'''
+```
 
 
 
