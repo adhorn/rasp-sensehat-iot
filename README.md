@@ -6,7 +6,7 @@ Goal:
 Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cloud.
 
 
-![Demo](https://github.com/adhorn/rasp-sensehat-iot/pics/demo.png)
+![Demo](https://github.com/adhorn/rasp-sensehat-iot/blob/master/pics/demo.png)
 
 
 create Data mapping to ES
