@@ -1,4 +1,4 @@
-**README**
+
 Code used during my walk-through AWS IoT talk at the AWS Meetup Finland "Derive insights from IoT in minutes on AWS"
 https://www.meetup.com/awsfin/events/237185018/
 
