@@ -14,6 +14,7 @@ sense.clear()
 
 publish_topic = "$aws/things/sensehat/shadow/update/temperature"
 subscribe_topic = "$aws/things/sensehat/shadow/update/info/#"
+#  '#' in the topic is a wildcard so any topic behond that wildcard will work
 
 
 def on_connect(mqttc, obj, flags, rc):
@@ -29,6 +30,8 @@ def on_message(mqttc, obj, msg):
             msg.topic, msg.qos, msg.payload
             )
     )
+    #  Take the message payload and prints it on the screem
+    #  of the sensehat display
     sense.show_message(msg.payload)
     sense.clear()
 
