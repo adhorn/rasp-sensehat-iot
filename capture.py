@@ -28,6 +28,8 @@ reko = boto3.client('rekognition', region_name=REGION)
 
 
 def take_photo():
+    sleep(3)
+    print('taking picture')
     camera.capture('capture/image.jpg')
     return True
 
