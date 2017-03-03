@@ -35,7 +35,8 @@ def on_message(mqttc, obj, msg):
     #  of the sensehat display
     sense.show_message(msg.payload)
     sense.clear()
-    if msg.payload == 'take_pic':
+    print('message payload:{}'.format(msg.payload))
+    if 'take_pic' in msg.payload:
         take_photo()
 
 
