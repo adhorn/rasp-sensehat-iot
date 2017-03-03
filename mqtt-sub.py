@@ -35,8 +35,8 @@ def on_message(mqttc, obj, msg):
     #  of the sensehat display
     sense.show_message(msg.payload)
     sense.clear()
-    print('message payload: {}'.format(msg.payload["message"]))
-    if 'take_pic' in msg.payload["message"]:
+    print('message payload: {}'.format(msg.payload))
+    if 'take_pic' in msg.payload:
         take_photo()
         reko_detect_faces(read_image('capture/image.jpg'))
 
