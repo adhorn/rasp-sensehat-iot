@@ -4,8 +4,12 @@ import boto3
 import time
 import json
 
-region = 'eu-west-1'
-iot = boto3.client('iot-data', region_name=region)
+try:
+    from local_settings import REGION
+except ImportError:
+    from default_settings import REGION
+
+iot = boto3.client('iot-data', region_name=REGION)
 sense = SenseHat()
 
 

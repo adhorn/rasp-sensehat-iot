@@ -2,6 +2,7 @@ import ssl
 import paho.mqtt.client as mqtt
 from time import sleep
 from sense_hat import SenseHat
+from capture import take_photo
 
 try:
     from local_settings import ROOT_CA, CERTFILE, KEYFILE, AWS_IOT_ENDPOINT
@@ -34,6 +35,8 @@ def on_message(mqttc, obj, msg):
     #  of the sensehat display
     sense.show_message(msg.payload)
     sense.clear()
+    if msg.payload == 'take_pic':
+        take_photo()
 
 
 mqttc = mqtt.Client(client_id="mqtt-test")
