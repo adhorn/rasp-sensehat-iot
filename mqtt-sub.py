@@ -2,7 +2,7 @@ import ssl
 import paho.mqtt.client as mqtt
 from time import sleep
 from sense_hat import SenseHat
-from capture import take_photo
+from capture import take_photo, reko_detect_faces, read_image
 
 try:
     from local_settings import ROOT_CA, CERTFILE, KEYFILE, AWS_IOT_ENDPOINT
@@ -35,9 +35,10 @@ def on_message(mqttc, obj, msg):
     #  of the sensehat display
     sense.show_message(msg.payload)
     sense.clear()
-    print('message payload:{}'.format(msg.payload))
-    if 'take_pic' in msg.payload:
+    print('message payload: {}'.format(msg.payload["message"]))
+    if 'take_pic' in msg.payload["message"]:
         take_photo()
+        reko_detect_faces(read_image('capture/image.jpg'))
 
 
 mqttc = mqtt.Client(client_id="mqtt-test")
