@@ -1,6 +1,7 @@
 *.HIDDEN_README
 local_settings.py
 settings.py
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
