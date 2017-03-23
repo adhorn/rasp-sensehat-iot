@@ -2,7 +2,7 @@ import ssl
 import paho.mqtt.client as mqtt
 from time import sleep
 from sense_hat import SenseHat
-from capture import take_photo, reko_detect_faces, read_image
+#from capture import take_photo, reko_detect_faces, read_image
 
 try:
     from local_settings import ROOT_CA, CERTFILE, KEYFILE, AWS_IOT_ENDPOINT
@@ -14,7 +14,7 @@ sense = SenseHat()
 sense.clear()
 
 publish_topic = "$aws/things/sensehat/shadow/update/temperature"
-subscribe_topic = "$aws/things/sensehat/shadow/update/info/#"
+subscribe_topic = "iotbutton/G030MD024412CV3X"
 #  '#' in the topic is a wildcard so any topic behond that wildcard will work
 
 
@@ -33,12 +33,12 @@ def on_message(mqttc, obj, msg):
     )
     #  Take the message payload and prints it on the screem
     #  of the sensehat display
-    sense.show_message(msg.payload)
+    sense.show_message('Hello Meetup!')
     sense.clear()
-    print('message payload: {}'.format(msg.payload))
-    if 'take_pic' in msg.payload:
-        take_photo()
-        reko_detect_faces(read_image('capture/image.jpg'))
+    # print('message payload: {}'.format(msg.payload))
+    # if 'take_pic' in msg.payload:
+    #     take_photo()
+    #     reko_detect_faces(read_image('capture/image.jpg'))
 
 
 mqttc = mqtt.Client(client_id="mqtt-test")
