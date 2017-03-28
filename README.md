@@ -1,6 +1,6 @@
 
 Code used during the AWS IoT talk "Derive insights from IoT in minutes on AWS"
-https://www.meetup.com/awsfin/events/237185018/
+Slides: https://www.slideshare.net/hornsby/derive-insight-from-iot-data-in-minute-with-aws-73773075
 
 **Goal**:
 Get data from RaspberryPi with SenseHat sensor analysed in seconds on the AWS Cloud.
