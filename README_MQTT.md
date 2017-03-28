@@ -1,4 +1,5 @@
 Code used during the AWS IoT talk "Derive insights from IoT in minutes on AWS" 
+
 Slides: https://www.slideshare.net/hornsby/derive-insight-from-iot-data-in-minute-with-aws-73773075
 
 **Goal**:
