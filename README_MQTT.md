@@ -1,6 +1,6 @@
--
-Code used during my walk-through AWS IoT talk at the AWS Meetup Finland "Derive insights from IoT in minutes on AWS"
-https://www.meetup.com/awsfin/events/237185018/
+Code used during the AWS IoT talk "Derive insights from IoT in minutes on AWS" 
+
+Slides: https://www.slideshare.net/hornsby/derive-insight-from-iot-data-in-minute-with-aws-73773075
 
 **Goal**:
 Connect the RaspberryPi with SenseHat to the AWS IoT platform using MQTT protocol and test real-time interaction between the RaspberryPi and the IoT platform.
