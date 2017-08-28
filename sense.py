@@ -3,7 +3,7 @@ from datetime import datetime
 import boto3
 import time
 import json
-import subprocess
+import os
 
 
 try:
@@ -46,12 +46,15 @@ def get_humidity():
 
 
 def get_temperature():
-    cpu_temp = subprocess.check_output("vcgencmd measure_temp", shell=True)
     temp = sense.get_temperature()
-    print("Temperature: %s C" % temp)
-    temp_calibrated = temp - ((cpu_temp - temp)/5.466)
-    print("Calibrated Temperature: %s C" % temp_calibrated)
-    return temp_calibrated
+    t = os.popen('/opt/vc/bin/vcgencmd measure_temp')
+    cputemp = t.read()
+    cputemp = cputemp.replace('temp=', '')
+    cputemp = cputemp.replace('\'C\n', '')
+    cputemp = float(cputemp)
+    newtemp = temp - ((cputemp - temp) / 2)
+    print("%.1f C" % newtemp)
+    return newtemp
 
 
 def get_pressure():
