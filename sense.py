@@ -3,6 +3,8 @@ from datetime import datetime
 import boto3
 import time
 import json
+import subprocess
+
 
 try:
     from local_settings import REGION
@@ -44,9 +46,12 @@ def get_humidity():
 
 
 def get_temperature():
-    temperature = sense.get_temperature_from_humidity()
-    print("Temperature: %s C" % temperature)
-    return temperature
+    cpu_temp = subprocess.check_output("vcgencmd measure_temp", shell=True)
+    temp = sense.get_temperature()
+    print("Temperature: %s C" % temp)
+    temp_calibrated = temp - ((cpu_temp - temp)/5.466)
+    print("Calibrated Temperature: %s C" % temp_calibrated)
+    return temp_calibrated
 
 
 def get_pressure():
