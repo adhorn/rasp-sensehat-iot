@@ -30,7 +30,7 @@ pyasn1==0.1.7
 pygame==1.9.2a0
 pygobject==3.14.0
 pyinotify==0.9.4
-pyOpenSSL==0.13.1
+pyOpenSSL==17.5.0
 pyparsing==2.1.10
 pyserial==2.6
 python-apt==0.9.3.12
