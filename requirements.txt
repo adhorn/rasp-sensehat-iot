@@ -36,7 +36,7 @@ pyserial==2.6
 python-apt==0.9.3.12
 python-dateutil==2.6.0
 PyYAML==3.12
-requests==2.4.3
+requests==2.20.0
 RPi.GPIO==0.6.3
 rsa==3.4.2
 RTIMULib==7.2.1
