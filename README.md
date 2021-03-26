@@ -1,3 +1,5 @@
+NO LONGER MAINTAINED - ARCHIVED
+
 
 Code used during the AWS IoT talk "Derive insights from IoT in minutes on AWS"
 
