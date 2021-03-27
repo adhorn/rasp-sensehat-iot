@@ -35,7 +35,7 @@ pyparsing==2.1.10
 pyserial==2.6
 python-apt==0.9.3.12
 python-dateutil==2.6.0
-PyYAML==3.12
+PyYAML==5.4
 requests==2.4.3
 RPi.GPIO==0.6.3
 rsa==3.4.2
